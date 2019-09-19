@@ -26,16 +26,15 @@ INSERT INTO Students VALUES (58702,"Bruce","Horloge");
 INSERT INTO Students VALUES (61039,"Peter","File");
 INSERT INTO Students VALUES (59286,"Bernard","Urluberlu");
 
-INSERT INTO Courses VALUES ("YMCA","Yoga Malin Comme Alain");
-INSERT INTO Courses VALUES ("SPQR","Senatus Populusque Romanus");
-INSERT INTO Courses VALUES ("JTM","Joute Terminale Magnifique");
-INSERT INTO Courses VALUES ("XD","Xénologie Délibérée");
-INSERT INTO Courses VALUES ("JPP","Jazz Précédant Poutine");
+INSERT INTO Courses VALUES (121,"YMCA");
+INSERT INTO Courses VALUES (133,"Senatus Populusque Romanus");
+INSERT INTO Courses VALUES (025,"JTM");
+INSERT INTO Courses VALUES (094,"XD");
+INSERT INTO Courses VALUES (101,"JPP");
 
-INSERT INTO Subscriptions VALUES (67554,"YMCA");
-INSERT INTO Subscriptions VALUES (67554,"JPP");
-INSERT INTO Subscriptions VALUES (59865,"JPP");
-INSERT INTO Subscriptions VALUES (61039,"SPQR");
-INSERT INTO Subscriptions VALUES (70128,"JTM");
-INSERT INTO Subscriptions VALUES (65834,"XD");
-
+INSERT INTO Subscriptions VALUES (67554,121);
+INSERT INTO Subscriptions VALUES (67554,133);
+INSERT INTO Subscriptions VALUES (59865,101);
+INSERT INTO Subscriptions VALUES (61039,133);
+INSERT INTO Subscriptions VALUES (70128,025);
+INSERT INTO Subscriptions VALUES (65834,094);
