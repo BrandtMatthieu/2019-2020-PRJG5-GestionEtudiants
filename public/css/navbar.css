@@ -1,0 +1,18 @@
+nav {
+    background-color: var(--darkestGray);
+    overflow: hidden;
+}
+
+nav a {
+    color: var(--white);
+    float: left;
+    font-size: 17px;
+    padding: 14px 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.1s background-color ease-in-out;
+}
+
+nav a:hover {
+    background-color: var(--blue);
+}
