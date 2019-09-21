@@ -1,0 +1,1 @@
+tsc --alwaysStrict --target es6 --lib ESNext,DOM,ESNext.Array sort.ts
