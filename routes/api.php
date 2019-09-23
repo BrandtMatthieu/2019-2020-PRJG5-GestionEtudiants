@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Student;
 
 Route::get('students', function () {
-    // TODO
-    return;
+    return DB::table('students')->get();
 });
 
 Route::get('student/{student}', function (Student $student) {
@@ -14,8 +14,7 @@ Route::get('student/{student}', function (Student $student) {
 });
 
 Route::get('courses', function() {
-    // TODO
-    return;
+    return DB::table('courses')->get();
 });
 
 Route::post('signup', function() {
