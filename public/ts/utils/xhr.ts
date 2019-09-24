@@ -10,7 +10,7 @@ export function xhr(type: "GET" | "POST" | "DELETE", host: string, port: number,
 				}
 			}
 		};
-		xhr.open(type, `${host}${port ? `:${port}` : ""}${address}`, false);
+		xhr.open(type, `http://${host}${port ? `:${port}` : ""}${address}`, false);
 		xhr.send();
 	});
 }

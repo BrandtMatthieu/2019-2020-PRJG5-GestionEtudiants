@@ -8,18 +8,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { xhr } from "./utils/xhr";
 window.addEventListener("load", () => __awaiter(this, void 0, void 0, function* () {
-    const results = JSON.parse((yield xhr("GET", document.location.hostname, parseInt(document.location.port), "/students/")).responseText);
-    for (const result of results) {
-        const matricule = document.createElement("td");
-        matricule.innerText = result.idStudent.toString();
-        const nom = document.createElement("td");
-        nom.innerText = result.lastName;
-        const prenom = document.createElement("td");
-        prenom.innerText = result.firstName;
-        const tr = document.createElement("tr");
-        tr.appendChild(matricule);
-        tr.appendChild(nom);
-        tr.appendChild(prenom);
-        document.getElementById("table").appendChild(tr);
-    }
+    xhr("GET", `api.${document.location.hostname}`, parseInt(document.location.port), "/students/")
+        .then((xhrResult) => {
+        for (const result of JSON.parse(xhrResult.responseText)) {
+            const matricule = document.createElement("td");
+            matricule.innerText = result.idStudent.toString();
+            const nom = document.createElement("td");
+            nom.innerText = result.lastName;
+            const prenom = document.createElement("td");
+            prenom.innerText = result.firstName;
+            const tr = document.createElement("tr");
+            tr.appendChild(matricule);
+            tr.appendChild(nom);
+            tr.appendChild(prenom);
+            document.getElementById("table").appendChild(tr);
+        }
+    });
 }));
