@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS "Courses" (
 	PRIMARY KEY("idCourse")
 );
 
-CREATE TABLE IF NOT EXISTS "Subscriptions" (
+CREATE TABLE IF NOT EXISTS "subscriptions" (
 	"idStudent"	INTEGER NOT NULL,
 	"idCourse"	TEXT NOT NULL,
 	PRIMARY KEY("idStudent", "idCourse")
@@ -37,9 +37,9 @@ INSERT INTO Courses VALUES (7, "PER", "Persistance des données");
 INSERT INTO Courses VALUES (8, "SYS", "Systèmes d'exploitation");
 INSERT INTO Courses VALUES (9, "VEI", "Veilles technologiques");
 
-INSERT INTO Subscriptions VALUES (59865, 3);
-INSERT INTO Subscriptions VALUES (61039, 5);
-INSERT INTO Subscriptions VALUES (65834, 2);
-INSERT INTO Subscriptions VALUES (67554, 4);
-INSERT INTO Subscriptions VALUES (67554, 5);
-INSERT INTO Subscriptions VALUES (70128, 1);
+INSERT INTO subscriptions VALUES (59865, 3);
+INSERT INTO subscriptions VALUES (61039, 5);
+INSERT INTO subscriptions VALUES (65834, 2);
+INSERT INTO subscriptions VALUES (67554, 4);
+INSERT INTO subscriptions VALUES (67554, 5);
+INSERT INTO subscriptions VALUES (70128, 1);

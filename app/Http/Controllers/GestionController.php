@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
-class UserController extends Controller
+class GestionController extends Controller
 {
     /**
      * Get a list of all students
@@ -81,20 +81,20 @@ class UserController extends Controller
 		select idCourse, Courses.courseLabel, Courses.courseDescription 
 		from Courses 
 		where idCourse not in (
-			select idCourse from Subscriptions where idStudent=?
+			select idCourse from subscriptions where idStudent=?
 		)
 		', [$idStudent]);
 	}
 
-	public function studentSubscribtion($idStudent,$idCourse)
+	public function studentSubscription($idStudent,$idCourse)
 	{
-		DB::insert('insert into Subscriptions (idStudent, idCourse) values (?, ?);', [$idStudent, $idCourse]);
+		DB::insert('insert into subscriptions (idStudent, idCourse) values (?, ?);', [$idStudent, $idCourse]);
 		return;
 	}
 
 	public function unSubscribeStudent($idStudent,$idCourse)
 	{
-		DB::delete('delete from Subscriptions where idStudent=? and idcourse= ? ', [$idStudent, $idCourse]);
+		DB::delete('delete from subscriptions where idStudent=? and idcourse= ? ', [$idStudent, $idCourse]);
 		return;
 	}
 }
