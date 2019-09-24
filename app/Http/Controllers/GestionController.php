@@ -12,7 +12,9 @@ class GestionController extends Controller
      */
     public function allStudents()
     {
-        return DB::select('select idStudent, firstName, lastName from students;');
+		return DB::select('
+		select idStudent, firstName, lastName
+		from students;');
     }
 
 	/**
@@ -21,10 +23,14 @@ class GestionController extends Controller
 	public function registerStudent($firstName, $lastName, $idStudent)
 	{
 		if (empty($idStudent) && !idStudentExists($idStudent) && is_numeric($idStudent) && $idStudent > 0) {
-			DB::insert('insert into students (firstName, lastName) values (?, ?);', [$firstName, $lastName]);
+			DB::insert('
+			insert into students (firstName, lastName)
+			values (?, ?);', [$firstName, $lastName]);
 		} else {
 			$nextIdStudent = getNextIdStudent();
-			DB::insert('insert into students (idStudent, firstName, lastName) values (?, ?);', [$nextIdStudent, $firstName, $lastName]);
+			DB::insert('
+			insert into students (idStudent, firstName, lastName)
+			values (?, ?);', [$nextIdStudent, $firstName, $lastName]);
 		}
 		return;
 	}
@@ -37,7 +43,7 @@ class GestionController extends Controller
 		return sizeof(DB::select('
 		select count(*) as c
 		from students
-		where idStudent == ?;', [$idStudent])) > 0;
+		where idStudent = ?;', [$idStudent])) > 0;
 	}
 
 	/**
@@ -66,9 +72,9 @@ class GestionController extends Controller
 	public function getCoursesOfStudent($idStudent)
 	{
 		return DB::select('
-		select idCourse, courseLabel, courseDescription
+		select courses.idCourse, courses.courseLabel, courses.courseDescription
 		from courses
-		inner join subscriptions on courses.idCourse = subscriptions.idCourse
+		join subscriptions on courses.idCourse = subscriptions.idCourse
 		where idStudent = ?', [$idStudent]);
 	}
 
@@ -78,23 +84,27 @@ class GestionController extends Controller
 	public function getMissingCoursesOfStudents($idStudent)
 	{
 		return DB::select('
-		select idCourse, Courses.courseLabel, Courses.courseDescription 
-		from Courses 
+		select courses.idCourse, courses.courseLabel, courses.courseDescription 
+		from courses 
 		where idCourse not in (
-			select idCourse from subscriptions where idStudent=?
-		)
+			select idCourse from subscriptions where idStudent = ?
+		);
 		', [$idStudent]);
 	}
 
 	public function studentSubscription($idStudent,$idCourse)
 	{
-		DB::insert('insert into subscriptions (idStudent, idCourse) values (?, ?);', [$idStudent, $idCourse]);
+		DB::insert('
+		insert into subscriptions (idStudent, idCourse)
+		values (?, ?);', [$idStudent, $idCourse]);
 		return;
 	}
 
 	public function unSubscribeStudent($idStudent,$idCourse)
 	{
-		DB::delete('delete from subscriptions where idStudent=? and idcourse= ? ', [$idStudent, $idCourse]);
+		DB::delete('
+		delete from subscriptions
+		where idStudent = ? and idcourse = ? ', [$idStudent, $idCourse]);
 		return;
 	}
 }

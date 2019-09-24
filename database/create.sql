@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS "Students" (
 	"firstName"	TEXT NOT NULL,
 	"lastName"	TEXT NOT NULL,
 	PRIMARY KEY("idStudent")
-)
+);
 
 CREATE TABLE IF NOT EXISTS "Courses" (
 	"idCourse"	INTEGER NOT NULL UNIQUE,
@@ -12,11 +12,11 @@ CREATE TABLE IF NOT EXISTS "Courses" (
 	PRIMARY KEY("idCourse")
 );
 
-CREATE TABLE IF NOT EXISTS "subscriptions" (
+CREATE TABLE IF NOT EXISTS "Subscriptions" (
 	"idStudent"	INTEGER NOT NULL,
 	"idCourse"	TEXT NOT NULL,
 	PRIMARY KEY("idStudent", "idCourse")
-)
+);
 
 INSERT INTO Students VALUES (58702, "Bruce", "Horloge");
 INSERT INTO Students VALUES (59286, "Bernard", "Urluberlu");
