@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/table.css') }}" >
 <script src={{ asset('js/sort.js')}}></script>
 <h1>Liste des Cours</h1>
-<table>
+<table id="table">
     <tr>
         <th>
             <span>Id</span>
