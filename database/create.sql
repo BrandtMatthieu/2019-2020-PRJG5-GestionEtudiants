@@ -7,8 +7,8 @@ CREATE TABLE IF NOT EXISTS "Students" (
 
 CREATE TABLE IF NOT EXISTS "Courses" (
 	"idCourse"	INTEGER NOT NULL UNIQUE,
-	"label"	TEXT NOT NULL,
-	"nom"	TEXT NOT NULL,
+	"courseLabel"	TEXT NOT NULL,
+	"courseDescription"	TEXT NOT NULL,
 	PRIMARY KEY("idCourse")
 );
 
