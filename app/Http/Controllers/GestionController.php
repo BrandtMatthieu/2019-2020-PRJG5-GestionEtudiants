@@ -8,15 +8,16 @@ use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
     /**
-     * Show a list of all of the application's users.
-     *
-     * @return Response
+     * Get a list of all students
      */
     public function allStudents()
     {
         return DB::select('select idStudent, firstName, lastName from students;');
     }
 
+	/**
+	 * Adds a new student into the database
+	 */
 	public function registerStudent($firstName, $lastName, $idStudent)
 	{
 		if (empty($idStudent) && !idStudentExists($idStudent) && is_numeric($idStudent) && $idStudent > 0) {
@@ -28,6 +29,9 @@ class UserController extends Controller
 		return;
 	}
 
+	/**
+	 * Checks if the id already exists
+	 */
 	private function idStudentExists($idStudent)
 	{
 		return sizeof(DB::select('
@@ -36,6 +40,9 @@ class UserController extends Controller
 		where idStudent == ?;', [$idStudent])) > 0;
 	}
 
+	/**
+	 * Get a free student id
+	 */
 	private function getNextIdStudent()
 	{
 		return DB::select('
@@ -43,6 +50,9 @@ class UserController extends Controller
 		from students;') + 1;
 	}
 
+	/**
+	 * Get a list of all courses
+	 */
 	public function allCourses()
 	{
 		return DB::select('
@@ -50,6 +60,9 @@ class UserController extends Controller
 		from courses;');
 	}
 
+	/**
+	 * Get all courses a student is signed up to
+	 */
 	public function getCoursesOfStudent($idStudent)
 	{
 		return DB::select('
@@ -59,6 +72,9 @@ class UserController extends Controller
 		where idStudent = ?', [$idStudent]);
 	}
 
+	/**
+	 * Get all courses a student is not signed up to
+	 */
 	public function getMissingCoursesOfStudents($idStudent)
 	{
 		return DB::select('
