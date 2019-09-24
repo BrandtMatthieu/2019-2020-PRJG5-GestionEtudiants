@@ -78,9 +78,23 @@ class UserController extends Controller
 	public function getMissingCoursesOfStudents($idStudent)
 	{
 		return DB::select('
-		select idCourse, courseLable, courseDescription
-		from courses
-		left join subscribtions on subscribtions.idCourse = courses.idCourse
-		where idStudent = ?;', [$idStudent]);
+		select idCourse, Courses.courseLabel, Courses.courseDescription 
+		from Courses 
+		where idCourse not in (
+			select idCourse from Subscriptions where idStudent=?
+		)
+		', [$idStudent]);
+	}
+
+	public function studentSubscribtion($idStudent,$idCourse)
+	{
+		DB::insert('insert into Subscriptions (idStudent, idCourse) values (?, ?);', [$idStudent, $idCourse]);
+		return;
+	}
+
+	public function unSubscribeStudent($idStudent,$idCourse)
+	{
+		DB::delete('delete from Subscriptions where idStudent=? and idcourse= ? ', [$idStudent, $idCourse]);
+		return;
 	}
 }
