@@ -1,21 +1,21 @@
-CREATE TABLE IF NOT EXISTS "Students" (
-	"idStudent"	INTEGER NOT NULL UNIQUE,
-	"firstName"	TEXT NOT NULL,
-	"lastName"	TEXT NOT NULL,
-	PRIMARY KEY("idStudent")
+CREATE TABLE `students` (
+	`idStudent`	integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+	`firstName`	varchar NOT NULL,
+	`lastName`	varchar NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS "Courses" (
-	"idCourse"	INTEGER NOT NULL UNIQUE,
-	"courseLabel"	TEXT NOT NULL,
-	"courseDescription"	TEXT NOT NULL,
-	PRIMARY KEY("idCourse")
+CREATE TABLE `courses` (
+	`idCourse`	integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+	`courseLabel`	varchar NOT NULL,
+	`courseDescription`	varchar NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS "Subscriptions" (
-	"idStudent"	INTEGER NOT NULL,
-	"idCourse"	TEXT NOT NULL,
-	PRIMARY KEY("idStudent", "idCourse")
+CREATE TABLE `subscriptions` (
+	`idStudent`	integer NOT NULL,
+	`idCourse`	integer NOT NULL,
+	FOREIGN KEY(`idStudent`) REFERENCES `students`(`idStudent`),
+	PRIMARY KEY(`idStudent`,`idCourse`),
+	FOREIGN KEY(`idCourse`) REFERENCES `courses`(`idCourse`)
 );
 
 INSERT INTO Students VALUES (58702, "Bruce", "Horloge");
