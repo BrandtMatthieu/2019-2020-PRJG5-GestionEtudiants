@@ -1,16 +1,16 @@
-export function xhr(type: "GET" | "POST" | "DELETE", host: string, port: number, address: string): Promise<XMLHttpRequest> {
-	return new Promise<XMLHttpRequest>((resolve, reject) => {
+export function xhr(type: "GET" | "POST" | "DELETE" | "PUT" | "OPTIONS", host: string, port: number, address: string): Promise<string> {
+	return new Promise<string>((resolve, reject) => {
 		const xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = (event) => {
-			if (this.readyState === xhr.DONE) {
-				if (this.status === 200) {
-					resolve(xhr);
+			if (xhr.readyState === xhr.DONE) {
+				if (xhr.status === 200) {
+					resolve(xhr.responseText);
 				} else {
 					reject();
 				}
 			}
 		};
-		xhr.open(type, `http://${host}${port ? `:${port}` : ""}${address}`, false);
-		xhr.send();
+		xhr.open(type, `http://${host}${port ? `:${port}` : ""}/${address}`, true);
+		xhr.send(null);
 	});
 }

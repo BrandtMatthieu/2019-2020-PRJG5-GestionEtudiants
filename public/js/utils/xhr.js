@@ -1,17 +1,17 @@
-export function xhr(type, host, port, address) {
+function xhr(type, host, port, address) {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
         xhr.onreadystatechange = (event) => {
-            if (this.readyState === xhr.DONE) {
-                if (this.status === 200) {
-                    resolve(xhr);
+            if (xhr.readyState === xhr.DONE) {
+                if (xhr.status === 200) {
+                    resolve(xhr.responseText);
                 }
                 else {
                     reject();
                 }
             }
         };
-        xhr.open(type, `${host}${port ? `:${port}` : ""}${address}`, false);
-        xhr.send();
+        xhr.open(type, `http://${host}${port ? `:${port}` : ""}/${address}`, true);
+        xhr.send(null);
     });
 }

@@ -1,17 +1,38 @@
-window.addEventListener("load", () => {
-    for(const el of Array.from(document.getElementsByClassName("sortUp")).concat(Array.from(document.getElementsByClassName("sortDown")))) {
+/**
+ * When the document is loaded, add an eventListener to the sort buttons
+ */
+window.addEventListener("load", (): void => {
+    for(const el of Array.from(document.getElementsByClassName("sortUp"))
+                    .concat(Array.from(document.getElementsByClassName("sortDown")))) {
         // @ts-ignore
-        el.onclick = () => {sort(el)};
+        el.onclick = (el: HTMLSpanElement): void => {
+            sort(el);
+        };
     }
 });
 
-function sort(button: HTMLSpanElement) {
-    const table: HTMLTableElement = button.closest("table")!;
-    const index: number = Array.from(button.parentElement!.parentElement!.children).indexOf(button.parentElement!);
-    const reverse: boolean = button.classList.contains("sortUp");
+/**
+ * Sorts the elements in a table
+ * @param button the sorting button of the table
+ */
+function sort(button: HTMLSpanElement): void {
+    const table: HTMLTableElement = button.closest("table")!; // table to sort
+    const index: number = Array.from(button.parentElement!.parentElement!.children)
+                                .indexOf(button.parentElement!); // sorting criteria
+    const reverse: boolean = button.classList.contains("sortUp"); // if reverse sorted
     // @ts-ignore
-    const elements: HTMLTableRowElement[] = Array.from(table.children[0].children).filter((el) => Array.from(el.children).map((el) => el.nodeName).every((el) => el === "TD"));
-    elements.sort((a, b) => (a.children[index] as HTMLTableDataCellElement).innerText.localeCompare((b.children[index] as HTMLTableDataCellElement).innerText, undefined, {numeric: true}));
+    const elements: HTMLTableRowElement[] = Array.from(table.children[0].children) // elements to sort
+        .filter((el): boolean => {
+            return Array.from(el.children).map((el): string => {
+                return el.nodeName;
+            }).every((el): boolean => {
+                return el === "TD";
+            });
+        });
+
+    elements.sort((a, b): number => {
+        return (a.children[index] as HTMLTableDataCellElement).innerText.localeCompare((b.children[index] as HTMLTableDataCellElement).innerText, undefined, {numeric: true});
+    });
     if(reverse) {
         elements.reverse();
     }
