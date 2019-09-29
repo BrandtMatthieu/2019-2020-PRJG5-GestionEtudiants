@@ -5,6 +5,8 @@
 @section("content")
 <link rel="stylesheet" type="text/css" href="{{ asset('css/table.css') }}" >
 <script src={{ asset('js/sort.js')}}></script>
+<script src={{ asset('js/listCourses.js')}}></script>
+<script src={{ asset('js/utils/xhr.js')}}></script>
 <h1>Liste des Cours</h1>
 <table id="table">
     <tr>
@@ -14,34 +16,15 @@
             <span title="Trier par id décroissant" class="sortUp">⇧</span>
         </th>
         <th>
-            <span>Libellé</span>
-            <span title="Trier libellé en ordre alphabétique"class="sortDown">⇩</span>
-            <span title="Trier libellé en ordre alphabétique inverse" class="sortUp">⇧</span>
+            <span>Label</span>
+            <span title="Trier label en ordre alphabétique"class="sortDown">⇩</span>
+            <span title="Trier label en ordre alphabétique inverse" class="sortUp">⇧</span>
         </th>
-    </tr>
-    <tr>
-        <td>dev</td>
-        <td>1ère - dev</td>
-    </tr>
-    <tr>
-        <td>atl</td>
-        <td>2ème - atl</td>
-    </tr>
-    <tr>
-        <td>per</td>
-        <td>3ème - per</td>
-    </tr>
-    <tr>
-        <td>mob</td>
-        <td>3ème - mob</td>
-    </tr>
-    <tr>
-        <td>web</td>
-        <td>1ère - web</td>
-    </tr>
-    <tr>
-        <td>sys</td>
-        <td>2ème - sys</td>
+        <th>
+            <span>Description</span>
+            <span title="Trier description en ordre alphabétique"class="sortDown">⇩</span>
+            <span title="Trier description en ordre alphabétique inverse" class="sortUp">⇧</span>
+        </th>
     </tr>
 </table>
 @endsection
