@@ -13,6 +13,6 @@ class SubscriptionTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Subscription::class, 50)->create();
+        factory(Subscription::class, 200)->create();
     }
 }

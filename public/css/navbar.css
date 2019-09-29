@@ -1,6 +1,9 @@
 nav {
+	top: 0;
+	width: 100%;
     background-color: var(--darkestGray);
     overflow: hidden;
+    position: fixed;
 }
 
 nav a {
