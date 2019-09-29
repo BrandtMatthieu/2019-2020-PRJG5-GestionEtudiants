@@ -10,28 +10,30 @@ class GestionController extends Controller
     /**
      * Get a list of all students
      */
-    public function allStudents()
+    public function getStudents()
     {
-		return DB::select('
-		select idStudent, firstName, lastName
-		from students;');
-    }
+		return DB::table('students')
+					->select('idStudent', 'firstName', 'lastName')
+					->get();
+	}
 
 	/**
 	 * Adds a new student into the database
 	 */
 	public function registerStudent($firstName, $lastName, $idStudent)
 	{
-		if (empty($idStudent) && !idStudentExists($idStudent) && is_numeric($idStudent) && $idStudent > 0) {
-			DB::insert('
-			insert into students (firstName, lastName)
-			values (?, ?);', [$firstName, $lastName]);
-		} else {
-			$nextIdStudent = getNextIdStudent();
-			DB::insert('
-			insert into students (idStudent, firstName, lastName)
-			values (?, ?);', [$nextIdStudent, $firstName, $lastName]);
+		$lastName = utf8_encode(mb_strtoupper($lastName));
+		$firstName = utf8_encode(ucwords(strtolower($firstName)));
+
+		if (empty($idStudent) || !is_numeric($idStudent) || $this->idStudentExists($idStudent) || $idStudent <= 0) {
+			$idStudent = $this->getNextIdStudent();
 		}
+		DB::table('students')
+				->insert([
+					'idStudent' => $idStudent,
+					'firstName' => $firstName,
+					'lastName' => $lastName,
+				]);
 		return;
 	}
 
@@ -40,10 +42,9 @@ class GestionController extends Controller
 	 */
 	private function idStudentExists($idStudent)
 	{
-		return sizeof(DB::select('
-		select count(*) as c
-		from students
-		where idStudent = ?;', [$idStudent])) > 0;
+		return DB::table('students')
+					->where('idStudent', $idStudent)
+					->exists();
 	}
 
 	/**
@@ -51,60 +52,80 @@ class GestionController extends Controller
 	 */
 	private function getNextIdStudent()
 	{
-		return DB::select('
-		select max(idStudent)
-		from students;') + 1;
+		$id = 1;
+		while($this->idStudentExists($id)) {
+			$id = $id + 1;
+		}
+		return $id;
 	}
 
 	/**
 	 * Get a list of all courses
 	 */
-	public function allCourses()
+	public function getCourses()
 	{
-		return DB::select('
-		select idCourse, courseLabel, courseDescription
-		from courses;');
+		return DB::table('courses')
+					->select('idCourse', 'courseLabel', 'courseDescription')
+					->get();
 	}
 
 	/**
 	 * Get all courses a student is signed up to
 	 */
-	public function getCoursesOfStudent($idStudent)
+	public function getCoursesSubscribedByStudent($idStudent)
 	{
-		return DB::select('
-		select courses.idCourse, courses.courseLabel, courses.courseDescription
-		from courses
-		join subscriptions on courses.idCourse = subscriptions.idCourse
-		where idStudent = ?', [$idStudent]);
+		return DB::table('courses')
+					->join('subscriptions', 'courses.idCourse', '=', 'subscriptions.idCourse')
+					->where('idStudent', $idStudent)
+					->select('courses.idCourse', 'courses.courseLabel', 'courses.courseDescription')
+					->get();
 	}
 
 	/**
 	 * Get all courses a student is not signed up to
 	 */
-	public function getMissingCoursesOfStudents($idStudent)
+	public function getCoursesNotSubscribedByStudent($idStudent)
 	{
 		return DB::select('
-		select courses.idCourse, courses.courseLabel, courses.courseDescription 
-		from courses 
-		where idCourse not in (
-			select idCourse from subscriptions where idStudent = ?
-		);
-		', [$idStudent]);
+			select courses.idCourse, courses.courseLabel, courses.courseDescription
+			from courses
+			where idCourse not in (
+				select idCourse from subscriptions where idStudent = ?
+			);', [$idStudent]);
+		/*
+		return DB::table('courses')
+					->whereNotIn('idCourse', function($q) {
+						$q->select('idCourse')
+							->from('subscriptions');
+					})
+					->where('idStudent', $idStudent)
+					->select('courses.idCourse', 'courses.courseLabel', 'courses.courseDescription')
+					->get();
+					*/
 	}
 
-	public function studentSubscription($idStudent,$idCourse)
+	/**
+	 * Subscribes a student to a course
+	 */
+	public function subscribeStudent($idStudent, $idCourse)
 	{
-		DB::insert('
-		insert into subscriptions (idStudent, idCourse)
-		values (?, ?);', [$idStudent, $idCourse]);
+		DB::table('subscriptions')
+			->insert([
+				'idStudent' => $idStudent,
+				'idCourse' => $idCourse,
+			]);
 		return;
 	}
 
-	public function unSubscribeStudent($idStudent,$idCourse)
+	/**
+	 * Unsubscribes a student to a course
+	 */
+	public function unsubscribeStudent($idStudent, $idCourse)
 	{
-		DB::delete('
-		delete from subscriptions
-		where idStudent = ? and idcourse = ? ', [$idStudent, $idCourse]);
+		DB::table('subscriptions')
+			->where('idStudent', $idStudent)
+			->where('idcourse', $idCourse)
+			->delete();
 		return;
 	}
 }
