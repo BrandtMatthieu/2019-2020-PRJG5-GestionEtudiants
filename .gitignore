@@ -6,6 +6,8 @@
 /.idea
 /.vagrant
 /database/database.sqlite
+.env.backup
+.phpunit.result.cache
 Homestead.json
 Homestead.yaml
 npm-debug.log
