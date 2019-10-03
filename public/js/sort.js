@@ -6,7 +6,7 @@ window.addEventListener("load", () => {
     for (const el of Array.from(document.getElementsByClassName("sortUp"))
         .concat(Array.from(document.getElementsByClassName("sortDown")))) {
         // @ts-ignore
-        el.onclick = (el) => {
+        el.onclick = () => {
             sort(el);
         };
     }
