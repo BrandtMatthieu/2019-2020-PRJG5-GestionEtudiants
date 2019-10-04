@@ -1,12 +1,11 @@
+/.idea
+/.vagrant
+/database/database.sqlite
 /node_modules
 /public/hot
 /public/storage
 /storage/*.key
 /vendor
-/.idea
-/.vagrant
-/database/database.sqlite
-.env
 .env.backup
 .phpunit.result.cache
 Homestead.json
