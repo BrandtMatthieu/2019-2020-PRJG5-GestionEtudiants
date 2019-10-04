@@ -18,7 +18,7 @@ window.addEventListener("load", () => __awaiter(this, void 0, void 0, function* 
         }
         if (courses.length === 0) {
             insertCourse({
-                idCourse: null,
+                idCourse: 0,
                 courseLabel: "(vide)",
                 courseDescription: "(vide)",
             });
@@ -26,7 +26,7 @@ window.addEventListener("load", () => __awaiter(this, void 0, void 0, function* 
     })
         .catch(() => {
         insertCourse({
-            idCourse: null,
+            idCourse: 0,
             courseLabel: "(erreur)",
             courseDescription: "(erreur)",
         });

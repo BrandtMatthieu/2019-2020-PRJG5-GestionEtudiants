@@ -1,0 +1,234 @@
+{
+  "id": "c9592469-e08b-42e2-a2fa-22df84fd49bd",
+  "version": "2.0",
+  "name": "GestionEtudiants",
+  "url": "http://localhost:8000",
+  "tests": [{
+    "id": "13bdf620-1e02-4d24-9e5d-848f4ab1ebf0",
+    "name": "Liste Etudiants (Button)",
+    "commands": [{
+      "id": "513eb2a8-29ac-4cc4-97b4-eeda81ecb276",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2ae520e5-47eb-4de2-97da-5120fd833876",
+      "comment": "",
+      "command": "click",
+      "target": "css=.buttonLike:nth-child(1)",
+      "targets": [
+        ["css=.buttonLike:nth-child(1)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Liste des Étudiants')])[2]", "xpath:link"],
+        ["xpath=(//a[contains(@href, '/studentsList')])[2]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "b9b6021f-1b93-45e3-bd74-d8f45a2a24ea",
+    "name": "Liste Etudiants (Navbar)",
+    "commands": [{
+      "id": "c5fbf115-5ef7-41d2-9a39-e25cc0afe2e9",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0d72836d-a018-4f86-8d14-93eef158b9ed",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Liste des Étudiants",
+      "targets": [
+        ["linkText=Liste des Étudiants", "linkText"],
+        ["css=nav > a:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Liste des Étudiants')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/studentsList')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Liste des Étudiants')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "b7e923eb-530c-467f-90c2-f4e8cf87e76e",
+    "name": "Accueil (Navbar)",
+    "commands": [{
+      "id": "bc1756e9-d96a-47da-86be-4b2c87dd8c63",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9dd7a18a-9af7-4376-a299-96030c897c1e",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Accueil",
+      "targets": [
+        ["linkText=Accueil", "linkText"],
+        ["css=nav > a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Accueil')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Accueil')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "4b5346ec-d2fc-4baf-866b-ec5ee2688261",
+    "name": "Inscrire Etudiants (Navbar)",
+    "commands": [{
+      "id": "c9bff1ba-d37f-46c2-8a71-72593dd9803d",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4312a4cd-53f9-44d8-8fbb-3bfc886c2969",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Inscrire un Étudiant",
+      "targets": [
+        ["linkText=Liste des Étudiants", "linkText"],
+        ["css=nav > a:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Liste des Étudiants')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/studentsList')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Liste des Étudiants')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "8a930876-ec7a-46c4-ae63-17bcfb6280fb",
+    "name": "Liste Cours (Navbar)",
+    "commands": [{
+      "id": "82260160-24dd-4b08-b170-8b2500dbae19",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5aea8386-19ef-4ddb-9467-6d2f41058a34",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Liste des Cours",
+      "targets": [
+        ["linkText=Liste des Étudiants", "linkText"],
+        ["css=nav > a:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Liste des Étudiants')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/studentsList')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Liste des Étudiants')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "b2f8cac0-97ce-4f3c-9add-2d1bd1eba3ce",
+    "name": "Inscrire Etudiants à Cours (Navbar)",
+    "commands": [{
+      "id": "a5423d63-9b8b-40d1-aedd-6cd86c6c7f64",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2b6d536b-038e-4c73-97df-bb7527f01aec",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Inscrire un Étudiant à un Cours",
+      "targets": [
+        ["linkText=Liste des Étudiants", "linkText"],
+        ["css=nav > a:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Liste des Étudiants')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/studentsList')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Liste des Étudiants')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "5ce7ff2b-03ab-457a-beb3-75474045abf7",
+    "name": "Inscrire Étudiant (Button)",
+    "commands": [{
+      "id": "54bd8280-e33e-4aed-b016-b11071381aa1",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "805cb6d5-c98b-44da-bd4c-6380a6e4007a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.buttonLike:nth-child(2)",
+      "targets": [
+        ["css=.buttonLike:nth-child(1)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Liste des Étudiants')])[2]", "xpath:link"],
+        ["xpath=(//a[contains(@href, '/studentsList')])[2]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "fe13bc46-9d93-4faf-ac41-edc5424bc420",
+    "name": "Liste Cours (Button)",
+    "commands": [{
+      "id": "156fb39e-de17-4deb-a2aa-eea92e93345f",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "025f44a4-5d63-4e54-a916-e3c43a4ef7c4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.buttonLike:nth-child(3)",
+      "targets": [
+        ["css=.buttonLike:nth-child(1)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Liste des Étudiants')])[2]", "xpath:link"],
+        ["xpath=(//a[contains(@href, '/studentsList')])[2]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "a8c360e4-ae86-4bf2-a321-f07b7a520c78",
+    "name": "Inscrire Étudiant à Cours (Button)",
+    "commands": [{
+      "id": "6ed5e6e3-26ab-47aa-a73f-8813181b8c5e",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2e98e317-357d-429c-ad6a-1895b43f5bc4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.buttonLike:nth-child(4)",
+      "targets": [
+        ["css=.buttonLike:nth-child(1)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Liste des Étudiants')])[2]", "xpath:link"],
+        ["xpath=(//a[contains(@href, '/studentsList')])[2]", "xpath:href"],
+        ["xpath=//div/a", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "a964b383-72a2-4646-9c73-9db572b93939",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["13bdf620-1e02-4d24-9e5d-848f4ab1ebf0"]
+  }],
+  "urls": ["http://localhost:8000/"],
+  "plugins": []
+}

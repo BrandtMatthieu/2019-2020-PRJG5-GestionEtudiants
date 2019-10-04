@@ -10,17 +10,17 @@ tbody>*>* {
 th {
     text-align: left;
     font-size: 16pt;
-    background-color: var(--darkestGray);
+    background-color: var(--darkest_gray);
 }
 th>span:not(:nth-child(1)) {
     cursor: pointer;
 }
 
 tr:nth-child(odd)>td {
-    background-color: var(--lightGray);
+    background-color: var(--light_gray);
 }
 tr:nth-child(even)>td {
-    background-color: var(--darkGary);
+    background-color: var(--dark_gary);
 }
 
 table>tbody>*:nth-child(1)>*:nth-child(1) {

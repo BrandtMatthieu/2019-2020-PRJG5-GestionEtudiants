@@ -10,7 +10,7 @@
 </head>
 <body>
     <nav>
-        <a href="/">Accueil</a>
+        <a href="/index">Accueil</a>
         <a href="/studentsList">Liste des Étudiants</a>
         <a href="/registerStudent">Inscrire un Étudiant</a>
         <a href="/coursesList">Liste des Cours</a>

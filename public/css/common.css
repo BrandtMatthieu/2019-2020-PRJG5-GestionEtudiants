@@ -9,25 +9,27 @@
 }
 
 :root {
-    --darkGray: #2F3136;
-    --darkestGray: #202225;
-    --lightGray: #40444B;
+    --dark_gray: #2F3136;
+    --darkest_gray: #202225;
+    --light_gray: #40444B;
     --blue: #7289DA;
-    --blueHover: #677bc4;
+    --blue_hover: #677bc4;
     --white: #eeeeee;
     --red: #f04747;
     --green: #43B581;
-    --greenHover: #3ca374;
+    --green_hover: #3ca374;
 }
 
 body {
     margin: 0px;
     padding: 0px;
-    background-color: var(--darkGray);
+    background-color: var(--dark_gray);
+    scroll-behavior: smooth;
 }
 
 main {
     margin: 50px;
+    overflow: scroll;
 }
 
 body>main>h1 {
@@ -54,7 +56,7 @@ select {
     transition: 0.2s background-color ease-in-out;
 }
 .buttonLike:hover {
-    background-color: var(--blueHover);
+    background-color: var(--blue_hover);
 }
 
 .buttonLike.danger {
@@ -71,7 +73,7 @@ select {
     background-color: var(--green);
 }
 .buttonLike.safe:hover {
-    background-color: var(--greenHover);
+    background-color: var(--green_hover);
 }
 
 .buttonLike+.buttonLike {
@@ -79,7 +81,7 @@ select {
 }
 
 select {
-    background-color: var(--darkestGray);
+    background-color: var(--darkest_gray);
     border: solid 1px var(--white);
     min-width: 200px;
 }

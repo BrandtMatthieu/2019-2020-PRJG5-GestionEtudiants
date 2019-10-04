@@ -1,3 +1,18 @@
+form {
+    background-color: var(--darkest_gray);
+	border-radius: 10px;
+	margin: auto;
+	padding: 50px;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	text-align: center;
+	width: fit-content;
+}
+
+form * {
+	margin: 15px;
+}
+
 input[type="text"],
 input[type="number"] {
     background-color: transparent;

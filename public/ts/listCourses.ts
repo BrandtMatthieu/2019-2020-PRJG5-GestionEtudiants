@@ -13,7 +13,7 @@ window.addEventListener("load", async (): Promise<void> => {
         }
         if(courses.length === 0) {
             insertCourse({
-                idCourse: null,
+                idCourse: 0,
                 courseLabel: "(vide)",
                 courseDescription: "(vide)",
             });
@@ -21,7 +21,7 @@ window.addEventListener("load", async (): Promise<void> => {
     })
     .catch((): void => {
         insertCourse({
-            idCourse: null,
+            idCourse: 0,
             courseLabel: "(erreur)",
             courseDescription: "(erreur)",
         });
