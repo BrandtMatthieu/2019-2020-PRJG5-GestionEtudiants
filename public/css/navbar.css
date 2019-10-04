@@ -1,21 +1,38 @@
 nav {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
 	top: 0;
 	width: 100%;
-    background-color: var(--darkestGray);
+    background-color: var(--darkest_gray);
     overflow: hidden;
-    position: fixed;
+    /*position: fixed;*/
 }
 
-nav a {
+@media (max-width: 520px) {
+    nav {
+        grid-template-rows: repeat(5, 1fr);
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 0px;
+    }
+
+    nav > a {
+        line-height: 25px !important;
+        border-bottom: solid var(--dark_gray) 1px;
+        border-top: solid var(--dark_gray) 1px;
+    }
+}
+
+nav > a {
     color: var(--white);
     float: left;
     font-size: 17px;
-    padding: 14px 16px;
+    line-height: 40px;
     text-align: center;
     text-decoration: none;
     transition: 0.1s background-color ease-in-out;
 }
 
-nav a:hover {
+nav > a:hover {
     background-color: var(--blue);
 }

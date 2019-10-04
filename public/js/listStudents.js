@@ -18,7 +18,7 @@ window.addEventListener("load", () => __awaiter(this, void 0, void 0, function* 
         }
         if (students.length === 0) {
             insertStudent({
-                idStudent: null,
+                idStudent: 0,
                 lastName: "(vide)",
                 firstName: "(vide)",
             });
@@ -26,7 +26,7 @@ window.addEventListener("load", () => __awaiter(this, void 0, void 0, function* 
     })
         .catch(() => {
         insertStudent({
-            idStudent: null,
+            idStudent: 0,
             lastName: "(erreur)",
             firstName: "(erreur)",
         });

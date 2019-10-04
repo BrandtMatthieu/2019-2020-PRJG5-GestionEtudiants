@@ -1,14 +1,13 @@
 /.idea
 /.vagrant
 /database/database.sqlite
-/node_modules
 /public/hot
 /public/storage
 /storage/*.key
+/test/Browser/screenshots/*
 /vendor
-.env.backup
+.env
+.env.testing
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
-npm-debug.log
-yarn-error.log

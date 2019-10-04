@@ -13,7 +13,7 @@ window.addEventListener("load", async (): Promise<void> => {
         }
         if(students.length === 0) {
             insertStudent({
-                idStudent: null,
+                idStudent: 0,
                 lastName: "(vide)",
                 firstName: "(vide)",
             });
@@ -21,7 +21,7 @@ window.addEventListener("load", async (): Promise<void> => {
     })
     .catch((): void => {
         insertStudent({
-            idStudent: null,
+            idStudent: 0,
             lastName: "(erreur)",
             firstName: "(erreur)",
         });
