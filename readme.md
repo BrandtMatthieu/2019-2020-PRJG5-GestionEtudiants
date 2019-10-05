@@ -1,9 +1,17 @@
 # GestionEtudiants
 
+## Installation
+
+Run
+
+```bash
+install.cmd
+```
+
 ## Stories
 
 1. Story 1
-    * Voire tous les étudiants triés par matricule ✔️
+    * Voir tous les étudiants triés par matricule ✔️
     * Trier les étudiants par nom après la chargement de la page ✔️
 2. Story 2
     * Ajouter un étudiant ✔️
