@@ -4,15 +4,13 @@ namespace Tests\Browser\Pages;
 
 use Laravel\Dusk\Browser;
 
-class HomePage extends Page
-{
+class HomePage extends Page {
     /**
      * Get the URL for the page.
      *
      * @return string
      */
-    public function url()
-    {
+    public function url() {
         return '/';
     }
 
@@ -22,8 +20,7 @@ class HomePage extends Page
      * @param  \Laravel\Dusk\Browser  $browser
      * @return void
      */
-    public function assert(Browser $browser)
-    {
+    public function assert(Browser $browser) {
         //
     }
 
@@ -32,8 +29,7 @@ class HomePage extends Page
      *
      * @return array
      */
-    public function elements()
-    {
+    public function elements() {
         return [
             '@element' => '#selector',
         ];

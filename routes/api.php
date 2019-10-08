@@ -60,3 +60,7 @@ Route::options('students/{student}/course/{course}/', function($student, $course
 Route::delete('students/{student}/course/{course}/', function($student, $course) {
     return app('App\Http\Controllers\GestionController')->unsubscribeStudent($student, $course);
 })->middleware('cors');
+
+Route::get('logs/', function() {
+    return app('App\Http\Controllers\GestionController')->getLogs();
+})->middleware('cors');

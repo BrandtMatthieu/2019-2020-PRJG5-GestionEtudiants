@@ -4,15 +4,8 @@ use Illuminate\Database\Seeder;
 
 use App\Subscription;
 
-class SubscriptionTableSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
+class SubscriptionTableSeeder extends Seeder {
+    public function run() {
         factory(Subscription::class, 200)->create();
     }
 }

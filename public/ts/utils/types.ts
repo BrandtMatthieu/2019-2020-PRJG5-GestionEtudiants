@@ -15,3 +15,11 @@ export interface Course {
     courseLabel: string;
     courseDescription: string;
 }
+
+export interface Log {
+    timestamp: number;
+    login: string;
+    idAction: number;
+    idStudent: number;
+    value: string;
+}

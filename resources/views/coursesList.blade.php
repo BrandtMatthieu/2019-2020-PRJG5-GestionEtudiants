@@ -17,13 +17,13 @@
         </th>
         <th>
             <span>Label</span>
-            <span title="Trier label en ordre alphabétique"class="sortDown">⇩</span>
-            <span title="Trier label en ordre alphabétique inverse" class="sortUp">⇧</span>
+            <span title="Trier label par ordre alphabétique"class="sortDown">⇩</span>
+            <span title="Trier label par ordre alphabétique inverse" class="sortUp">⇧</span>
         </th>
         <th>
             <span>Description</span>
-            <span title="Trier description en ordre alphabétique"class="sortDown">⇩</span>
-            <span title="Trier description en ordre alphabétique inverse" class="sortUp">⇧</span>
+            <span title="Trier description par ordre alphabétique"class="sortDown">⇩</span>
+            <span title="Trier description par ordre alphabétique inverse" class="sortUp">⇧</span>
         </th>
     </tr>
 </table>

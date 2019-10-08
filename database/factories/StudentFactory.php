@@ -5,7 +5,8 @@ use Faker\Generator as Faker;
 $factory->define(App\Student::class, function(Faker $faker) {
     return [
         'idStudent' => $faker->randomNumber(5, false),
-        'firstName' => utf8_encode(ucwords(strtolower($faker->firstName))),
-        'lastName' => utf8_encode(mb_strtoupper($faker->lastName)),
+        'firstName' => ucwords(mb_strtolower($faker->firstName)),
+        'lastName' => mb_strtoupper($faker->lastName),
+        'deleted' => $faker->randomElement(array(true, false, false)),
     ];
 });

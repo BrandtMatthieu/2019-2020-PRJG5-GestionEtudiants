@@ -15,6 +15,7 @@
         <a href="/registerStudent">Inscrire un Étudiant</a>
         <a href="/coursesList">Liste des Cours</a>
         <a href="/signupToCourse">Inscrire un Étudiant à un Cours</a>
+        <a href="/logs">Historique</a>
     </nav>
     <main>
         @yield("content")
