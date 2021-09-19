@@ -8,59 +8,59 @@ use App\Student;
 use App\Course;
 use App\Subscription;
 
-/**
- * Get all students
- */
-Route::get('students/', function () {
-    return app('App\Http\Controllers\GestionController')->getStudents();
-})->middleware('cors');
+Route::group(['middleware' => 'cors'], function() {
 
-/**
- * Register a new student
- */
-Route::post('student/', function() {
-    app('App\Http\Controllers\GestionController')->registerStudent($_POST["firstName"], $_POST["lastName"], $_POST["id"]);
-    return back();
-})->middleware('cors');
+    Route::prefix('students')->group(function() {
 
-/**
- * Get all courses where student is signed up
- */
-Route::get('students/{student}/subscribed/', function ($student) {
-    return app('App\Http\Controllers\GestionController')->getCoursesSubscribedByStudent($student);
-})->middleware('cors');
+        /**
+         * Get all students
+         */
+        Route::get('/', function () {
+            return app('App\Http\Controllers\GestionController')->getStudents();
+        });
 
-/**
- * Get all courses student is not signed up
- */
-Route::get('students/{student}/notSubscribed/', function ($student) {
-    return app('App\Http\Controllers\GestionController')->getCoursesNotSubscribedByStudent($student);
-})->middleware('cors');
+        /**
+         * Get all courses where student is signed up
+         */
+        Route::get('/{idStudent}/subscribed/', function ($idStudent) {
+            return app('App\Http\Controllers\GestionController')->getCoursesSubscribedByStudent($idStudent);
+        });
 
-/**
- * Get all courses
- */
-Route::get('courses/', function() {
-    return app('App\Http\Controllers\GestionController')->getCourses();
-})->middleware('cors');
+        /**
+         * Get all courses student is not signed up
+         */
+        Route::get('/{idStudent}/notSubscribed/', function ($idStudent) {
+            return app('App\Http\Controllers\GestionController')->getCoursesNotSubscribedByStudent($idStudent);
+        });
 
-/**
- * Subscribe a student to a course
- */
-Route::post('students/{student}/course/{course}/', function($student, $course) {
-    return app('App\Http\Controllers\GestionController')->subscribeStudent($student, $course);
-})->middleware('cors');
+        /**
+         * Subscribe a student to a course
+         */
+        Route::post('/{idStudent}/course/{idCourse}/', function($idStudent, $idCourse) {
+            return app('App\Http\Controllers\GestionController')->subscribeStudent($idStudent, $idCourse);
+        });
 
-/**
- * Unsubscribe a student from a course
- */
-Route::options('students/{student}/course/{course}/', function($student, $course) {
-    return;
-})->middleware('cors');
-Route::delete('students/{student}/course/{course}/', function($student, $course) {
-    return app('App\Http\Controllers\GestionController')->unsubscribeStudent($student, $course);
-})->middleware('cors');
+        /**
+         * Unsubscribe a student from a course
+         */
+        Route::options('/{idStudent}/course/{idCourse}/', function($idStudent, $idCourse) {
+            return;
+        });
+        Route::delete('/{idStudent}/course/{idCourse}/', function($idStudent, $idCourse) {
+            return app('App\Http\Controllers\GestionController')->unsubscribeStudent($idStudent, $idCourse);
+        });
 
-Route::get('logs/', function() {
-    return app('App\Http\Controllers\GestionController')->getLogs();
-})->middleware('cors');
+    });
+
+    /**
+     * Get all courses
+     */
+    Route::get('courses/', function() {
+        return app('App\Http\Controllers\GestionController')->getCourses();
+    });
+
+    Route::get('logs/', function() {
+        return app('App\Http\Controllers\GestionController')->getLogs();
+    });
+
+});

@@ -14,7 +14,8 @@ form * {
 }
 
 input[type="text"],
-input[type="number"] {
+input[type="number"],
+input[type="password"] {
     background-color: transparent;
     border: solid 1px var(--white);
     border-radius: 3px;

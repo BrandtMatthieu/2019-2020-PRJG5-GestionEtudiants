@@ -15,6 +15,10 @@ Route::get('/studentsList', function () {
 Route::get('/registerStudent', function () {
     return view('registerStudent');
 });
+Route::post('/registerStudent', function () {
+    app('App\Http\Controllers\GestionController')->registerStudent($_POST["firstName"], $_POST["lastName"], $_POST["id"]);
+    return view('studentsList');
+});
 
 Route::get('/coursesList', function () {
     return view('coursesList');
@@ -26,6 +30,14 @@ Route::get('/signupToCourse', function () {
 
 Route::get('/logs', function() {
     return view('logs');
+});
+
+Route::get('/login', function() {
+    return view('login');
+});
+
+Route::get('/logout', function() {
+    return view('logout');
 });
 
 ?>

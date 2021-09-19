@@ -85,3 +85,14 @@ select {
     border: solid 1px var(--white);
     min-width: 200px;
 }
+
+input:focus,
+select:focus {
+    outline:none;
+}
+
+input:focus:not(.danger):not(.buttonLike),
+input:hover:not(.danger):not(.buttonLike),
+select:focus {
+    background-color: #FFFFFF10 !important;
+}

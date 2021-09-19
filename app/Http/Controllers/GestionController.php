@@ -41,7 +41,7 @@ class GestionController extends Controller {
 	 */
 	private function idStudentExists($idStudent) {
 		return DB::table('students')
-					->where('idStudent', $idStudent)
+					->where('idStudent', '=', $idStudent)
 					->exists();
 	}
 
@@ -72,9 +72,9 @@ class GestionController extends Controller {
 	public function getCoursesSubscribedByStudent($idStudent) {
 		return DB::table('courses')
 					->join('subscriptions', 'courses.idCourse', '=', 'subscriptions.idCourse')
-					->where('idStudent', $idStudent)
+					->where('idStudent', '=', $idStudent)
 					->select('courses.idCourse', 'courses.courseLabel', 'courses.courseDescription')
-					->orderBy('course.idCourse')
+					->orderBy('courses.idCourse')
 					->get();
 	}
 
@@ -119,16 +119,58 @@ class GestionController extends Controller {
 	public function unsubscribeStudent($idStudent, $idCourse) {
 		DB::table('subscriptions')
 			->where('idStudent', $idStudent)
-			->where('idcourse', $idCourse)
+			->where('idcourse', '=', $idCourse)
 			->delete();
 		return;
 	}
 
 	public function getLogs() {
 		return DB::table('logs')
-			->join('users', 'logs.idUser', '=', 'users.idUser')
-			->select('logs.timestamp', 'users.login', 'logs.idAction', 'logs.idStudent', 'logs.value')
-			->orderBy('logs.timestamp')
-			->get();
+					->join('users', 'logs.idUser', '=', 'users.idUser')
+					->select('logs.timestamp', 'users.login', 'logs.idAction', 'logs.idStudent', 'logs.value')
+					->orderBy('logs.timestamp')
+					->get();
+	}
+
+	public function getIdUser($token) {
+		return DB::table('users')
+					->select('idUser')
+					->where('token', '=', $token)
+					->first();
+	}
+
+	public function tokenExists($token) {
+		return DB::table('users')
+					->where('token', '=', $token)
+					->exists();
+	}
+
+	public function login($login, $password) {
+		$exists = DB::table('users')
+						->where('login', '=', $login)
+						->exists();
+		if(!$exists) {
+			return null;
+		}
+
+		$dbPassword = DB::table('user')
+							->where('login', '=', $login)
+							->select('password')
+							->first();
+		$dbTimestamp = DB::table('user')
+							->where('login', '=', $login)
+							->select('timestamp')
+							->first();
+		if(!(hash('sha256', $password.$dbTimestamp) == $dbPassword)) {
+			return null;
+		}
+
+		$newToken = bin2hex(random_bytes(32));
+
+		DB::table('users')
+				->where('login', '=', $login)
+				->update(['token' => $newToken]);
+
+		return $newToken;
 	}
 }

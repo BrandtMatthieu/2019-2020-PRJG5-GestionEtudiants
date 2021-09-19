@@ -17,6 +17,6 @@
     * API Restful JSON ✔️
 7. Story 7
     * Modifier un étudiant ❌
-    * Système de logs ❌
+    * Système de logs ✔️
 8. Story 8
     * Récupérer données depuis Google Sheets ❌

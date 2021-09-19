@@ -2,9 +2,14 @@ import {xhr} from "./utils/xhr";
 import { Student } from "./utils/types";
 
 /**
- * When document is loaded, gets the students and display them
+ * When document is loaded
  */
-window.addEventListener("load", async (): Promise<void> => {
+window.addEventListener("load", loadStudents);
+
+/**
+ * gets the students and display them
+ */
+async function loadStudents(): Promise<void> {
     xhr("GET", `api.${document.location.hostname}`, parseInt(document.location.port), "students/")
     .then((xhrResult): void => {
         const students: Student[] = JSON.parse(xhrResult);
@@ -27,7 +32,7 @@ window.addEventListener("load", async (): Promise<void> => {
         });
         console.error("Error happened during xhr");
     });
-});
+}
 
 /**
  * Displays a student. in a table
@@ -37,13 +42,25 @@ function insertStudent(student: Student): void {
     const table: HTMLTableElement = document.querySelector("#table>tbody");
 
     const matricule: HTMLTableDataCellElement = document.createElement("td");
-    matricule.innerText = student.idStudent ? student.idStudent.toString() : "(vide)";
+    const matriculeInput: HTMLInputElement = document.createElement("input");
+    matriculeInput.className = "invisInput";
+    matriculeInput.value = student.idStudent ? student.idStudent.toString() : "(vide)";
+    matriculeInput.addEventListener("change", idStudentEdit);
+    matricule.appendChild(matriculeInput);
 
     const nom: HTMLTableDataCellElement = document.createElement("td");
-    nom.innerText = student.lastName.toString();
+    const nomInput: HTMLInputElement = document.createElement("input");
+    nomInput.className = "invisInput";
+    nomInput.value = student.lastName.toString();
+    nomInput.addEventListener("change", firstNameEdit);
+    nom.appendChild(nomInput);
 
     const prenom: HTMLTableDataCellElement = document.createElement("td");
-    prenom.innerText = student.firstName.toString();
+    const prenomInput: HTMLInputElement = document.createElement("input");
+    prenomInput.className = "invisInput";
+    prenomInput.value = student.firstName.toString();
+    prenomInput.addEventListener("change", lastNameEdit);
+    prenom.appendChild(prenomInput);
 
     const tr: HTMLTableRowElement = document.createElement("tr");
     tr.appendChild(matricule);
@@ -51,4 +68,17 @@ function insertStudent(student: Student): void {
     tr.appendChild(prenom);
 
     table.appendChild(tr);
+}
+
+
+async function idStudentEdit() {
+    await xhr("POST", `api.${document.location.hostname}`, parseInt(document.location.port), "students/")
+}
+
+async function firstNameEdit() {
+
+}
+
+async function lastNameEdit() {
+
 }

@@ -4,7 +4,7 @@ table {
 }
 
 tbody>*>* {
-    padding: 12px;
+    padding: 10px;
 }
 
 th {
@@ -39,4 +39,12 @@ table>tbody>*:nth-last-child(1)>*:nth-last-child(1) {
 th,
 tr {
     min-width: 70px;
+}
+
+tr>td>.invisInput {
+    background-color: inherit;
+    border: none;
+    border-radius: 5px;
+    font-size: 12pt;
+    padding: 5px;
 }
